@@ -908,243 +908,244 @@ Es la forma más común para actualizar tu Raspiblitz. Selecciona esta opción p
 
 ##### PATCH: Parches para el código de Raspiblitz
 
-With Patching you have now an easy way to sync your RaspiBlitz code/scripts with the official RaspiBlitz GitHub Repo or even your own forked GitHub Repo. This is an option for people that report bugs and we like to offer them a quick script update (patch) between RaspiBlitz releases or for people who want to develolp on the RaspiBlitz and sync code between their IDE, forked GitHub and their RaspiBlitz.
+Con los parches puedes actualizar los últimos scripts del Repo oficial de Raspiblitz en Github. Es una buena opción para gente que reporta errores y que quiere probar una solución rápida sin tener que esperar a la siguiente versión oficial. También funciona para personas que quieren utilizar sus propias versiones modificadas de Raspiblitz.
 
-##### LND: Interim LND Update
+##### LND: Actualización LND intermedia
 
-Sometimes there is a new LND release that has some breaking changes that once you updated the LND database cannot be reversed (like the update from 0.9.2 to 0.10.0). Then RaspiBlitz offers you an optional update ... this is where you then can update LND.
+A veces el equipo de desarrollo de LND publica actualizaciones para su daemon. Algunas actualizaciones llegan a romper los canales; de este modo puedes actualizar cuando lo creas conveniente.
 
-If you choose this you get the option to do this `VERIFIED` that means it offers you the optional LND update we tested the RaspiBlitz with or `RECKLESS` which will just grab the latest LND release from the GitHub releases page (also Release Candidates) and install it with no further guarantees and verification checks - this is for people that run nodes to test new releases and how they work with existing RaspiBlitz apps.
+Para hacer esto, tendrás la opción `VERIFIED` que significa una actualización que ha sido probada en el Raspiblitz o la opción `RECKLESS` con el que vas a obtener la actualización directamente desde el repo de LND, aún para las versiones en prueba; esta última opción es más para personas que buscan probar aplicaciones nuevas de trabajo y experimentales.
 
-##### BITCOIN: Interim Bitcoin Update
+##### BITCOIN: Actualización Bitcoin intermedia
 
-Like with LND you have the possiblity to upadte the bitcoin core version here.
+Al igual que en la opción anterior, aquí podrás tener las opciones para actualizar el Bitcoin-Core.
 
-#### REBOOT: Reboot RaspiBlitz
+#### REBOOT: Reinicia tu RaspiBlitz
 
-A safe way to restart the RaspiBlitz ... have you tried turning it off and on again?
+Una forma segura de reiniciar tu Raspiblitz. "¿Ha intentado apagarlo y encenderlo de nuevo?"
 
-#### OFF: PowerOff RaspiBlitz
+#### OFF: Apagar tu RaspiBlitz
 
-A safe way to shutdown the RaspiBlitz.
+Una forma segura de apagar tu RaspiBlitz.
 
-#### X: Console Terminal
+#### X: Consola terminal
 
-Closes the SSH main menu and exits to the terminal - where the user can make use of the CLI clients `bitcoin-cli` & `lncli` directly.
+Cierra el menú SSH y sale a la terminal donde el usuario puede hacer uso de comandos y clientes CLI como `bitcoin-cli` y `lncli` directamente.
 
-With the command `raspiblitz`, it's possible to return to the main menu.
+Con el comando `raspiblitz`, es posible regresar al menú principal.
 
-## Import a Migration File
+## Importa un archivo de migración
 
-As mentioned above you can export a Migration File from your RaspiBlitz with MAINMENU > REPAIR > MIGRATION and store it on your laptop.
+Como mencionamos anteriormente; puedes exportar un archivo de migración de tu Raspiblitz en MAINMENU > REPAIR > MIGRATION y transferirlo a tu laptotp o computadora.
 
-A Migration file contains all the important data from your RaspiBlitz, like your LND data, Bitcoin Wallet, raspiblitz.config, Tor/SSH keys .. and also installed apps. You can use this to migrate your RaspiBlitz to new hardware.
+Un archivo de migración contiene la información necesaria para instalar Raspiblitz en un nuevo hardware; contiene la información de LND, bitcoin wallet, raspiblitz.config, llaves Tor y SSH, así como alguna información de tus aplicaciones instaladas. 
 
-If you want to import it again to a new RaspiBlitz (for example with an updated HDD/SSD), you can choose the `MIGRATION` option on the first setup dialog after the Hardware test (where you normally choose between Bitcoin & Litecoin).
+Si quieres importar hacia una nueva Raspiblitz (por ejemplo, a una versión más actualizada) puedes escoger la opción `MIGRATION` durante las primeras pantallas de instalación, después de la prueba de hardware y cuando Raspiblitz te pregunta si vas a usar Bitcoin o Litecoin.
 
 ![SSH0](pictures/ssh0-welcome2.png)
 
-If you start MIGRATION you will need to format your HDD/SSD in the next step.
+Si comienzas una migración, necesitarás formatear tu disco duro en el siguiente paso.
 
 ![MIGRATION1](pictures/migration1.png)
 
-Normally you choose here the EXT4 format. But you also have the option to choose the BTRFS format which is an experimental feature under RaspiBlitz - see [FAQ for details on BTRFS](FAQ.md#why-use-btrfs-on-raspiblitz).
+Aquí normalmente escoges el formato EXT4. Pero también existe la opción BTRFS para cuando existen opciones experimentales para Raspiblitz. Mira [más detalles en el FAQ](FAQ.md#why-use-btrfs-on-raspiblitz).
 
-Then you will be asked to upload the Migration Zip file to the RaspiBlitz. Follow the instructions shown to you.
+Después podrás subir el archivo de migración a tu Raspiblitz. Sigue las instrucciones que se te muestran.
 
-Then you need to get a copy of the blockchain data again for your RaspiBlitz.
+Después necesitarás obtener una copia de la blockchain.
 
 ![MIGRATION2](pictures/migration2.png)
 
-You have the two options: [SYNC](README.md#1-sync---selfvalidate-all-blocks) and [COPY](README.md#2-copy---copy-from-laptop-or-another-raspiblitz-over-local-network), as mentioned in the normal setup.
+Recuerda que tendrás las opciones: [SYNC](README.md#1-sync---selfvalidate-all-blocks) y [COPY](README.md#2-copy---copy-from-laptop-or-another-raspiblitz-over-local-network), igual que en la configuración inicial.
 
-RaspiBlitz will reboot and start the normal recovery process to install all the services defined by the raspiblitz.config from your Migration File.
+RaspiBlitz reiniciará y comenzará el proceso de restauración siguiendo la configuración de acuerdo con el archivo raspiblitz.config contenido en tu archivo de migración.
 
-Then the blockchain needs to sync up and you should be back to normal.
+Después la blockchain se va a sincronizar y al final todo volverá a la normalidad.
 
-## Make a RaspiBlitz out of your Umbrel or MyNode
+## Haz un RaspiBlitz partiendo desde tu Umbrel o myNode
 
-Another kind of migration is when you already run an full node with the Umbrel or myNode software and you like to change it to RaspiBlitz without closing channels. You basically have all the hardware needed and just need to change software. You dont need the [LCD from the shopping list](#amazon-shopping-list-buy-parts--build-it-yourself) - RaspiBlitz can also run without an LCD.
+Otro tipo de migración es para cuando ya tienes un nodo corriendo con el software de Umbrel o myNode y quieres cambiarte a Raspiblitz sin cerrar tus canales. Básicamente tienes el hardware, por lo que solo necesitas cambiar el sistema operativo. No necesariamente necesitas la pantalla LCD, RaspiBlitz también fuede funcionar sin ella.
 
-*NOTE: This migration is still experimental. You will still use the terminal to setup & manage your RaspiBlitz. If that is too technical for you please wait for the RaspiBlitz v1.8, which will introduce a WebUI for your browser that make the migration to RaspiBlitz familiar like with your old node user experiences.*
+*NOTE: Esta migración todavía es experimental. Todavía tendrás que utilizar tu terminal para manejar tu Raspiblitz. Si eso es demasiado técnico para ti, espera a la versión 1.8 de Raspiblitz, que incluirá una interfaz web para tu navegador que hará que la migración sea más amigable para usuarios de otros nodos parecidos.*
 
-Before you start migration:
-* if you have on-chain funds on your old node - make sure to have the backup seed words
-* if you have lightning channels open on your old node - make sure to have downloaded the latest Static Channel Backup file to your laptop
+Antes de que comiences la migración:
+* si tienes fondos en tu viejo nodo, asegúrate de traer contigo tu lista de palabras semilla
+* si tienes canales activos en tu nodo, asegúrate de traer contigo una copia del archivo de respaldo Static Channel Backup
 
-Also be aware that at the moment RaspiBlitz can only transfer your blockchain and LND wallet data (including channels) over to RaspiBlitz. Any data/pairing of additional apps cannot be transfered and may get lost.
+También ten en cuenta que Raspiblitz únicamente podrá transferir al momento tu blockchain y la información de tu wallet LND (canales incluidos). La información de las aplicaciones y servicios extra no pueden ser transferidos y podrían perderse.
 
-Instructions for Migration:
-* shutdown your old node
-* remove the sd card
-* [download the latest Raspiblitz sd card image & flash it to your sd card](#downloading-the-software)
-* if you like to use a HDMI monitor for status & progress, create a empty file called `hdmi` (withot any ending) on the sd card while connected to your laptop 
-* [insert sd card, boot up & login per SSH](#boot-your-raspiblitz)
+Intrucciones para migración.
+* Apaga tu viejo nodo
+* Retira la microtarjeta SD
+* [descarga la más reciente versión de Raspiblitz y flashea la imagen](#downloading-the-software)
+* Si lo que quieres es utilizar un monitor HDMI para revisar el estado y progreso, crea un archivo vacío llamado 
+`hdmi` (sin ningúna extensión) en la microtarjeta SD cuando la tengas conectada a tu laptop o computadora.
+* [Inserta la microtarjeta, enciéndelo e inicia sesión](#boot-your-raspiblitz)
 
-Now RaspiBlitz should show you that old data from your node was detected and offer you todo the migration.
+Raspiblitz debería mostrarte la información detectada para ofrecer continuar con el proceso.
 
-* If you continue it will prepare the data & reboot.
-* The RaspiBlitz recover/update modus is starting - that will take a while and finally reboot.
-* Login per SSH as before and reset the passwords (`FINAL RECOVERY LOGIN` on LCD). Then a final reboot will happen.
-* Login per SSH with your new password A & unlock LND wallet with password C. Now blockchain needs to catch up and then your RaspiBlitz should be ready and show you (under INFO) your on-chain & channel balance.
+* Si continúas, Raspiblitz recuperará la información y después se reiniciará.
+* El modo de recuperación de Raspiblitz estaría comenzando; demoraría un tiempo hasta que finalmente se reinicie.
+* Inicia sesión y reestablece tus contraseñas  (`FINAL RECOVERY LOGIN` en el LCD). Después un último reinicio será necesario..
+* Inicia sesión por SSH con tus nuevos datos y desbloquea la wallet LND con la contraseña C. La blockchain necesitará ponerse al corriente pero después tu Raspiblitz debería estar listo mostrarte en el menú INFO tu balance on-chain y de canales.
 
-If you dont have an LCD or HDMI monitor connected it might be a bit difficult to see what state your RaspiBlitz is in. Just (re-)try to login per SSH again after the reboots (might always take some time until it reacts). 
+Si no tienes ningún monitor LCD o HDMI, puede que sea un poco cpomlicado conectarte a tu Raspiblitz para revisar el estado en el que se encuentra. Solo intenta hacer login SSH una vez más cada que se reinicie, a veces puede demorar un tiempo en reaccionar.
 
 ## Interface / APIs
 
-To develop your own scripts/apps and connect other services/apps to your RaspiBlitz, you have multiple interfaces/APIs available:
+Para desarrollar tus propios scripts y apps y conectarlos con servicios en tu Raspiblitz. Tienes múltiples interfaces API disponibles:
 
 ### Bitcoin
 
-* `bitcoin-cli` command line interface on the terminal
-* `bitcoind` running on port 8333 (public)
-* `JSON-RPC` running on port 8332 (local) [DOC](https://en.bitcoin.it/wiki/API_reference_%28JSON-RPC%29)
+* `bitcoin-cli` interfaz de líneas de comando para bitcoin
+* `bitcoind` corriendo en el puerto 8333 (público)
+* `JSON-RPC` corriendo en el puerto 8332 (local) [DOC](https://en.bitcoin.it/wiki/API_reference_%28JSON-RPC%29)
 
 ### LND-Lightning
 
-* `lncli` command line interface on the terminal [DOC](https://api.lightning.community/)
-* `lnd` running on port 9735 (public)
-* `gRPC` running on port 10009 (public) [DOC](https://api.lightning.community/)
-* `REST` running on port 8080 (public) [DOC](https://api.lightning.community/rest/index.html)
+* `lncli` interfaz de líneas de copmando para LND [DOC](https://api.lightning.community/)
+* `lnd` corriendo en el puerto9735 (público)
+* `gRPC` corriendo en el puerto 10009 (público) [DOC](https://api.lightning.community/)
+* `REST` corriendo en el puerto 8080 (público) [DOC](https://api.lightning.community/rest/index.html)
 
-If you activate Tor, then your LND gRPC & REST APIs will also be reachable publicly as a Hidden Service.
+Si activas TOR, entonces tugRPC  LND y APIs REST APIs también podrán ser enlazados como servicios incógnito.
 
-### Backup for On-Chain- & Channel-Funds
+### Backup para la información On-Chain- y fondos en Canales
 
-Since LND v0.6 (and RaspiBlitz v1.2), a feature called Static-Channel-Backups is available. Within RaspiBlitz this is used when a `channel.backup` file is mentioned.
+Desde la versión v0.6 de LND (y v1.2 de RaspiBlitz), una función llamada Static-Channel-Backups estará disponible. Dentro del Raspiblitz puede ser usado para obtener un archivo `channel.backup` como hemos mencionado anteriormente.
 
-At this point in time, it is the best way to backup and protect your channel funds on RaspiBlitz - so it's recommended to make use of it.
+Es recomendable tener archivos de respaldo para proteger los fondos en tus canales y nodo. 
 
-To recover your funds this way, you will need two things:
-- the 24-word seed
-- the latest `channel.backup` file
+Para recuperar tus fondos de este modo, necesitarías dos cosas:
+- la lista de 24 palabras semilla
+- el último archivo `channel.backup`
 
-You should have written down the word seed during wallet setup; keep it at a safe (offline) location. The `channel.backup` is stored on the HDD and updated by LND every time a new channel is opened or closed. The latest version of this file is needed to recover all your funds. In case your HDD gets damaged, RaspiBlitz always keeps a copy of the latest version of the `channel.backup` file on the SD card within the sub-directories of: `/home/admin/.lnd/data/chain/`.
+Deberías tener escrita la lista de palabras semillas de cuando iniciaste tu wallet LND; mantenla a salvo (offline) y en un lugar seguro. El archivo `channel.backup` es almacenado en el disco duro y se actualiza por LND cada que un nuevo canal es abierto o cerrado. La más reciente versión es necesaria para recuperar tus fondos. En caso de que tu disco duro se dañe, Raspiblitz mantendrá una copia del último archivo `channel.backup` en la microtarjeta SD en el sub-directorio: `/home/admin/.lnd/data/chain/`.
 
-If you want to get one step further in securing your funds against total fall-out of the RaspiBlitz (gets completely damaged, stolen or lost) then you can additionally set up an off-location or cloud backup of the `channel.backup` file. The file itself is encrypted by your word seed - so it's OK to store the file to untrusted third parties for backup (if you want). 
+So quieres ir un paso más allá aseguirando tus fondos ante una perdida total de tu Raspiblitz (que se descomponga por completo, te lo roben o lo pierdas) entonces puedes adicionalmente planificar un respaldo del archivo `channel.backup`. El archivo en sí está encriptado con tu contraseña, por lo que de seria relativamente seguro almacenarlo con algún tercero. 
 
-This video explains in detail how you can set further back Static Channel information:
+Este video explica como funcionaría el proceso (en Inglés):
 
 <a href="https://www.youtube.com/watch?v=5wi6l9jRVQs" target="_blank"><img src="pictures/video-backup.png" alt="Video Tutorial" width="400"></a><br>--watch--> https://www.youtube.com/watch?v=5wi6l9jRVQs
 
-The following options are also explained here shortly:
+Las siguientes opciones se explican brevemente a continuación:
 
-#### A) DropBox Backup Target
+#### A) Respaldo con DropBox
 
-Activate the StaticChannelBackup to DropBox in the `SETTINGS` menu of your RaspiBlitz. It will ask you for the Dropbox-Authtoken. This is how you can get this token:
+Activa la opción StaticChannelBackup DropBox dentro de `SETTINGS` en el menú de tu RaspiBlitz. Te pedirá el token de autenticación de Dropbox, para obtenerlo realiza lo siguiente:
 
-Go to your web browser, do the following:
+Ve a tu navegador:
 
-1. Go to https://www.dropbox.com/developers/apps/create and sign in.
+1. Abre la dirección https://www.dropbox.com/developers/apps/create inicia sesión o crea una cuenta nueva.
 
-1. Choose **Create App**.
+1. Selecciona **Create App**.
 
     ![Dropbox API 1](https://github.com/rootzoll/raspiblitz/raw/v1.6/pictures/dropbox-1.png)
 
-    Choose the 'Scoped Access' & 'App Folder' and set a unique name - for example `LNDbackup` with a random number behind it. Agree to Terms of Service and click 'Create App'.
+    Selecciona entre 'Scoped Access' o 'App Folder' y elige un nombre fijo, por ejemplo `LNDbackup` con un número aleatorio adicional. Acepta los térmios y condiciones de uso y después selecciona 'Create App'.
 
-1. Set **Permissions**.
+1. Configura los **Permissions**.
 
     ![Dropbox API 2](https://github.com/rootzoll/raspiblitz/raw/v1.6/pictures/dropbox-2.png)
 
-    Its important first to select the `Permissions` tab and activate the `files.content.write` permission. Dont forget to `Submit` the change before continue.
+    Es importante que vayas a la pestaña `Permissions` y actives los permisos del `files.content.write`. No olvides dar `Submit` a los cambios antes de continuar.
 
-1. Generate **OAUth2 Token**.
+1. Genera tu **OAUth2 Token**.
 
     ![Dropbox API 3](https://github.com/rootzoll/raspiblitz/raw/v1.6/pictures/dropbox-3.png)
 
-    Now go back to the 'Settings' tab and under 'OAuth2' click the 'Generate' button. You will now see a long string of letters and numbers appear. This is your **Dropbox-Authtoken**. Make sure to copy the complete token string .. there might be more if you scroll to the right in the token field. 
+    Ahora ve de vuelta a la pestaña 'Settings' debajo de 'OAuth2' y da click en el botón 'Generate'. Verás un largo código con números y letras; ese es tu **Dropbox-Authtoken**. Aségurate de copiarlo completamente, puede haber más texto si revisas más abajo. 
 
-To test it, try opening or closing a channel, and then check if you can find a copy of `channel.backup` in your Dropbox. You can check the background-script logs to see details on errors: `sudo journalctl -f -u background`
+Para probarlo, intenta abrir o cerrar un canal. Después revisa si puedes encontrar una copia del archivo `channel.backup` en tu Dropbox. Puedes monitorear el registro de esta herramienta ingresando en la terminal el comando: `sudo journalctl -f -u background`
 
-#### B) SCP Backup Target
+#### B) Respaldo manual SCP
 
-*You can also backup the SCB to your own server, but this needs manual setup:*
+*Puedes realizar un respaldo SCB hacia tu propia computadora o servidor, pero necesitarás hacerlo manualmente*
 
-In the `/mnt/hdd/raspiblitz.conf` the parameter `scpBackupTarget='[USER]@[SERVER]:[DIRPATH-WITHOUT-ENDING-/]'` can be set to activate this feature. On that remote server the public key of the RaspiBlitz root user needs to be part of the authorized keys - so that no password is needed for the background script to make the backup.
+En el archivo de configuración `/mnt/hdd/raspiblitz.conf` el parámetro `scpBackupTarget='[USER]@[SERVER]:[DIRPATH-WITHOUT-ENDING-/]'` puede activar esta opción. En el servidor remoto necesitarás una copia de la llave del usuario root del Raspiblitz para que no haya necesidad de ingresar contraseñas y el script pueda funcionar como tarea de fondo.
 
-The script `/home/admin/config.scripts/internet.sshpubkey.sh` helps on initalization (init); it will show and transfer ssh-pubkey to a remote server.
+El script `/home/admin/config.scripts/internet.sshpubkey.sh` ayuda con el arranque (init); te mostrará el proceso para hacer una copia de la llave-ssh al servidor externo.
 
-To test it, try opening or closing a channel, and then check if you can find a copy of `channel.backup` on your remote server. You can check the background-script logs to see details on errors: `sudo journalctl -f -u background`
+Para probarlo, intenta abrir o cerrar un canal. Después revisa si puedes encontrar una copia del archivo `channel.backup` en tu servidor externo. Puedes monitorear el registro de esta herramienta ingresando en la terminal el comando: `sudo journalctl -f -u background`
 
-#### C) Local Backup Target (USB Thumbdrive)
+#### C) Respaldo manuel en una memoria USB
 
-*You can also backup the SCB to another local drive, e.g. a USB stick:*
+*También puedes configurar la opción de respaldo utilizando una memoria USB:*
 
-You can use a small USB thumb drive (everything over 120MB is fine). Please don't use a second HDD/SSD for this because that might drain too much power and could hurt the security of your data more then it helps.
+Cualquiera con capacidad de almacenamiento arriba de 120MB está bien. No utilices un segundo disco duro porque podría ocupar mucha energia y comprometer la seguridad y rendimiento de la Raspberry y el disco con la información importante de tus fondos y canales.
 
-To activate this feature, go to `MAINMENU` > `SETTINGS` > `StaticChannelBackup on USB Drive` and follow the instructions.
+Para activar esta opción ve a `MAINMENU` > `SETTINGS` > `StaticChannelBackup on USB Drive` y sigue las instrucciones.
 
-To test it, try opening or closing a channel, and then check if you can find a copy of `channel.backup` in the specified location. You can check the background-script logs to see details on errors: `sudo journalctl -f -u background`
+Para probarlo, intenta abrir o cerrar un canal. Después revisa si puedes encontrar una copia del archivo `channel.backup` en tu dirección de USB. Puedes monitorear el registro de esta herramienta ingresando en la terminal el comando: `sudo journalctl -f -u background`
 
-## Updating RaspiBlitz to new Version
+## Actualizar el Raspiblitz a una nueva versión
 
-If you have a RaspiBlitz older than version v1.0, please [see here](FAQ.md).
+Si tienes una versión de Raspiblitz anterior a la version 1.0, [mira aquí](FAQ.md).
 
-If you have a RaspiBlitz v1.2 or higher - just follow the `UPDATE` option from the main menu (choose `RELEASE` if asked) and follow the instructions - see the process in detail in the following video.
+Si tienes un Raspiblitz versión 1.2 o mayor; sólo sigue las instrucciones en la opción `UPDATE` desde el menú principal (escoge `RELEASE` si te pregunta) y sigue las instrucciones. Mira el proceso a detalle en el siguiente video (en Inglés).
 
 <a href="https://www.youtube.com/watch?v=Xvn0WQfHUdI" target="_blank"><img src="pictures/video-update.png" alt="Video Tutorial" width="400"></a><br>--watch--> https://www.youtube.com/watch?v=Xvn0WQfHUdI
 
-If you have a RaspiBlitz v1.0 or v1.1 or higher do the following:
+Si tienes un RaspiBlitz v1.0 o v1.1 o mayor, has lo siguiente:
 
-* Main menu > OFF
-* Remove power
-* Remove SD card
+* Ve a "Main menu" y selecciona "OFF"
+* Retira el cable de la corriente de energía
+* Retira la microtarjeta SD
 
-Now download the new RaspiBlitz SD card image and write it to your SD card. Yes, you simply overwrite the old one, it's OK! The RaspiBlitz stores all your personal data on the HDD. See details about latest SD card image [here](#installing-the-software).
+Ahora descarga la nueva versión de Raspiblitz y flashea la imagen en la microtarjeta SD. Puedes sobre escribir la que ya tienes, pero sería recomendable conservar una segunda con la versión actual por si acaso. Mira los detalles sobre la última versión [aquí](#installing-the-software).
 
-*If you have done manual changes to the system (installed packages, added scripts, etc), you might need to do some preparations before overwriting your SD card - see [FAQ](FAQ.md#why-do-i-need-to-re-burn-my-sd-card-for-an-update).*
+*Si hiciste cambios manuales al sistema (instalación de paqueterías, scripts nuevos, etc) quizás tengas que hacer unos preparativos previos a sobreescribir tu microtarjeta SD; para saber más, mira el [FAQ](FAQ.md#why-do-i-need-to-re-burn-my-sd-card-for-an-update).*
 
-If done successfully, simply put the SD card into the RaspiBlitz and power on again. Then follow the instructions on the display ... and don't worry, you don't need to re-download the blockchain again. It is worth noting here that your SSH password will be reset to `raspiblitz`. You will be promted to change this once the update is finished.
+Si lo hiciste correctamente, simplemente coloca la microtarjeta SD de vuelta al Raspiblitz y enciéndelo de nuevo. Después sigue las instrucciones en la pantalla... pero no te preocupes, no será necesario volver a descargar y sincronizar la blockchain; pero es importante que tengas en cuenta que los datos de acceso por SSH serán reiniciados y necesitarás utilizar la contraseña y usuario `raspiblitz`. Más adelante en el proceso podrás renovar tus contraseñas.
 
-* [Why do I need to re-burn my SD card for an update?](FAQ.md#why-do-i-need-to-re-burn-my-sd-card-for-an-update)
+* [¿Por qué necesito volver a flashear una microtarjeta SD para actualizar mi Raspiblitz?](FAQ.md#why-do-i-need-to-re-burn-my-sd-card-for-an-update)
 
-## Build the SD Card Image
+## Construye una microtarjeta SD
 
-A ready-to-use SD card image of RaspiBlitz is provided by us for download, to get everybody started quickly (see above). But if you want to build that image yourself - here is a quick guide:
+Una microtarjeta SD con el archivo de imagen de RaspiBlitz lo ofrecemos nosotros para que lo descargues. Para echarlo a andar rápidamente, vuelve más arriba en la guía; pero si lo que quieres es construirla por ti mismo, aquí una breve guía:
 
-* Get a latest RaspiOS 64-bit: [DOWNLOAD](https://downloads.raspberrypi.org/raspios_arm64/images).
-* Write the image to an SD card: [TUTORIAL](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
-* Add a file called `ssh` to the root of the SD card when mounted on your laptop to enable SSH login.
-* Start the card on a Raspi and login via SSH with `ssh pi@[IP-OF-YOUR-RASPI]`. Password is `raspberry`.
+* Consigue la última versión 64-bit de RaspiOS: [DESCARGA](https://downloads.raspberrypi.org/raspios_arm64/images).
+* Flashea la imagen en una microtarjeta SD: [TUTORIAL](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
+* Añade un archivo llamado `ssh` al root de la microtarjeta SD montándola en tu laptop para activar el login SSH. 
+* Inicia la tarjeta en el RaspberryPi e inicia sesión via SSH con `ssh pi@[IP-DE-TU-RASPBERRY]`. La contraseña es `raspberry`.
 
-Now you are ready to start the SD card build script (check the code to see if the installation and config are OK for you). Copy the following command into your terminal and execute:
+Ahora estás listo para comenzar la construcción con el script para construcción de microtarjeta SD (revisa el código para que decidas si estás de acuerdo con la configuración). Copia el siguiente comando en tu terminal y ejecútalo:
 
 `wget https://raw.githubusercontent.com/rootzoll/raspiblitz/v1.7/build_sdcard.sh && sudo bash build_sdcard.sh`
 
-As you can see from the URL, you can find the build script in this Git repo under `build_sdcard.sh`. You can check what gets installed and configured in detail. Feel free to post improvements as pull requests.
+En el enlace podrás ver cómo esta construido el script `build_sdcard.sh`. Puedes revisar lo que hace y lo que será instalado. Siéntete libre de ofrecer recomendaciones y comentarios.
 
-The whole build process takes a while. At the end the LCD drivers get installed and a reboot is needed. A user `admin` is created during the process. Remember the default password is now `raspiblitz`. You can login per SSH again - this time use admin: `ssh admin@[IP-OF-YOUR-RASPI]`. The install dialog of the RaspiBlitz schould automatically start. If you do not want to continue with the installation at this moment and use this sd card as a template for setting up multiple RaspiBlitzes, click `Cancel` and run `/home/admin/XXprepareRelease.sh`. Once you see the LCD going white and the activity LED of the pi starts going dark, you can unplug power and remove the SD card. You have now built your own RaspiBlitz SD card image.
+El proceso completo demora un tiempo. Al final, la instalación de drivers para la pantalla LCD y un reinicio serán necesarios. Un usuario `admin` Será creado durante el proceso. Recuerda que la contraseña default es ahora `raspiblitz`. Después puedes acceder haciendo login de nuevo, esta vez con los nuevos datos ingresando: `ssh admin@[DIRECCION-IP-DE-TU-RASPIBLITZ]`. El proceso de instalación debería comenzar de nuevo automáticamente. Si no quieres continuar con la instalación en este momento, puedes usar esa misma microtarjeta SD para configurar multiples Raspiblitzes. Da click en `Cancel` y corre `/home/admin/XXprepareRelease.sh`. Una vez que el LCD se muestra en blanco y el indicador LED del Pi se ha apagado, puedes desconectarla de la corriente y retirar la microtarjeta SD. Habrás construido tu propia imagen Raspiblitz en una microtarjeta SD.
 
-*Note: If you plan to use your self-build sd card as a MASTER copy and distribute it: Use a smaller 8GB card for that. This way it's ensured that it will fit on every 16 GB card recommended for RaspiBlitz later on.*
+*Nota: Si pretendes autoconstruir microtarjetas SD como copias maestras y distribuirlas, mejor que utilices pequeñas de 8GB. Eso asegurará de que será adecuada para cualquiera de 16GB recomendada por Raspiblitz en un futuro.*
 
-* [Can I run RaspiBlitz on other computers than RaspberryPi?](FAQ.md#can-i-run-raspiblitz-on-other-computers-than-raspberrypi)
-* [How can I build an SD card other than the master branch?](FAQ.md#how-can-i-build-an-sd-card-other-then-the-master-branch)
-* [How can I build an SD card from my forked GitHub Repo?](FAQ.md#how-can-i-build-an-sd-card-from-my-forked-github-repo)
+* [¿Puedo usar Raspiblitz en otra computadora aparte de un RaspberryPi?](FAQ.md#can-i-run-raspiblitz-on-other-computers-than-raspberrypi)
+* [¿Cómo puedo construir otra imagen para microtarjeta SD además de la del repo oficial?](FAQ.md#how-can-i-build-an-sd-card-other-then-the-master-branch)
+* [¿Cómo puedo construir mi propia imagen para microtarjeta SD?](FAQ.md#how-can-i-build-an-sd-card-from-my-forked-github-repo)
 
 ## FAQ
 
-Here is a short selection of the very frequently asked questions:
+Aquí una corta selección de las más recurrentes preguntas en el FAQ:
 
-* [How to backup my Lightning Node?](FAQ.md#how-to-backup-my-lightning-node)
-* [How can I recover my coins from a failing RaspiBlitz?](FAQ.md#how-can-i-recover-my-coins-from-a-failing-raspiblitz)
-* [Are those "Under-Voltage detected" warnings a problem?](FAQ.md#are-those-under-voltage-detected-warnings-a-problem)
-* [Can I run RaspiBlitz on computer boards other than RaspberryPi?](FAQ.md#can-i-run-raspiblitz-on-other-computers-than-raspberrypi)
+* [¿Cómo hago un respaldo de mi nodo lightning?](FAQ.md#how-to-backup-my-lightning-node)
+* [¿Cómo puedo recuperar los fondos de un Raspiblitz con fallas?](FAQ.md#how-can-i-recover-my-coins-from-a-failing-raspiblitz)
+* [¿Esas alertas de voltaje son peligrosas?](FAQ.md#are-those-under-voltage-detected-warnings-a-problem)
+* [¿Puedo usar Raspiblitz en otra computadora aparte de un RaspberryPi?](FAQ.md#can-i-run-raspiblitz-on-other-computers-than-raspberrypi)
 
-Do you still have more questions? Check the [RaspiBlitz-FAQ-Archive](FAQ.md).
+¿Todavía tienes más preguntas? Revisa el [Archivo FAQ Raspiblitz](FAQ.md).
 
-## Community Development
+## Comunidad de desarrolladores
 
-Everybody is welcome to join, improve, and extend the RaspiBlitz - it's a work in progress. [Check the issues](https://github.com/rootzoll/raspiblitz/issues) if you wanna help out or add new ideas. You find the scripts used for RaspiBlitz interactions on the device at `/home/admin` or in this Git repo's subfolder `home.admin`.
+Cualquiera es bienvenido a integrarse para mejorar y extender las capacidades de Raspiblitz; se trata de un trabajo en progreso. [Mira los issues](https://github.com/rootzoll/raspiblitz/issues) Si quieres ayudar o aportar nuevas. Encontrarás los scripts utilizados para las interacciones con Raspiblitz dentro del folder `/home/admin` o en el subfolder de este repo Git `home.admin`.
 
-To start your Deep Dive into the RaspiBlitz project, the following YouTube video (July 2020) is recommended: [https://www.youtube.com/watch?v=QXUGg45CWLo](https://www.youtube.com/watch?v=QXUGg45CWLo)
+Para echar un vistazo al desarrollo de Raspiblitz, es recomendable ver este video. (En Inglés, Julio 2020): [https://www.youtube.com/watch?v=QXUGg45CWLo](https://www.youtube.com/watch?v=QXUGg45CWLo)
 
-Get all details on "How to contribute to RaspiBlitz Development" on this video:
+Mira todos los detalles en el video "Como contribuir al desarrollo de Raspiblitz (Inglés)":
 
 <a href="https://www.youtube.com/watch?v=ZVtZepV3OfM" target="_blank"><img src="pictures/video-contrib.png" alt="Video Tutorial" width="400"></a><br>--watch--> https://www.youtube.com/watch?v=ZVtZepV3OfM
 
-Also get inspired for a deep-dive with the original "[RaspiBolt](https://stadicus.github.io/RaspiBolt/)" tutorial on how to build a lightning node on the RaspberryPi, the base work on which the RaspiBlitz was developed - so much thx to Stadicus :)
+El proyecto original [RaspiBolt](https://stadicus.github.io/RaspiBolt/)" es un tutorial que enseña como construir un nodo lightning en un nodo de RaspberryPi; el trabajo base sobre el cuál Raspiblitz es desarrollado. Muchas gracias a Stadicus :)
 
-Join me on twitter [@rootzoll](https://twitter.com/rootzoll), visit us at an upcoming [#lightninghackday](https://twitter.com/hashtag/LightningHackday?src=hash) or check by one of our bitcoin meetups in Berlin ... every 1st Thursday evening a month at the room77 bar - feel free to buy me a beer with lightning there :)
+Sígueme en twitter [@rootzoll](https://twitter.com/rootzoll), vísitanos en el siguiente [#lightninghackday](https://twitter.com/hashtag/LightningHackday?src=hash) o encuentranos en alguna de nuestras reuniones en Berlín cada primer jueves del mes en el bar room77. Siéntete libre de invitarme una cerveza usando lightning. :)
 
-* [How can I get further help/support?](#support)
+* [¿Cómo puedo obtener más ayuda?](#support)
