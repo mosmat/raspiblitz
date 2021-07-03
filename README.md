@@ -50,7 +50,7 @@ Además, otras características como Pantalla Táctil, Autopiloto, DNS Dinámico
 
 ## Tiempo necesario para montar un Raspiblitz
 
-El Raspiblitz está optimizado para ser montado durante la duración de una conferencia o un taller-repentina (Mira los detalles en [tutorial para talleres](WORKSHOP-ESPLA.md)). Si se trata de montar una copia de la cadena de bloques actualizada, es posible tener un nodo listo en 2 a 3 horas; la mayor parte de la duración de la instalación se trata de tener paciencia.
+El Raspiblitz está optimizado para ser montado durante la duración de una conferencia o un taller-repentina (Mira los detalles en [tutorial para talleres](WORKSHOP.md)). Si se trata de montar una copia de la cadena de bloques actualizada, es posible tener un nodo listo en 2 a 3 horas; la mayor parte de la duración de la instalación se trata de tener paciencia.
 
 Si empiezas desde casa ordenando las partes desde Amazon, (mira la lista de compras más abajo) entonces se tratará de un proyecto de fin de semana con un montón de datos por descargar y sincronizar. Puedes hacer otras cosas mientras vigilas los avances de vez en cuando. 
 
@@ -89,7 +89,7 @@ La forma más barata de correr un nodo es comprando y montando las partes necesa
 
 *Por cierto, puedes pagar las piezas de Amazon utilizando bitcoin a través de [Bitrefill](https://blog.bitrefill.com/its-here-buy-amazon-vouchers-with-bitcoin-on-bitrefill-bb2a4449724a).*
 
-[What other case options do I have?](FAQ.md#what-other-case-options-do-i-have)
+[Qué otras opciones de carcasas existen?](FAQ.md#what-other-case-options-do-i-have)
 
 ## Ensambla tu Raspiblitz
 
